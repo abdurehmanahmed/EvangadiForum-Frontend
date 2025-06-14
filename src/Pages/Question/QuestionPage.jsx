@@ -55,7 +55,7 @@ function QuestionPage() {
       setError(error.response?.data?.message || 'Error posting question. Please try again.');
       setLoading(false);
     }
-  };
+  };    
 
   return (
     <div>
