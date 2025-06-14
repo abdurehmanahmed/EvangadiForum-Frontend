@@ -26,7 +26,7 @@ function Router() {
         path="/postQuestion"
         element={
           <ProtectedRoute>
-             <Layout>
+            <Layout>
                 <QuestionPage />
             </Layout>
           </ProtectedRoute>
