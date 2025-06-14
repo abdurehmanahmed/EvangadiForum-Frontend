@@ -36,8 +36,8 @@
   margin-bottom: 3rem;
 }
 
-/* .askQuestionBtn {
-  background-color: #7c83bb;
+.askQuestionBtn {
+  background-color: #526CF0;
   border: none;
   border-radius: 8px;
   padding: 0.75rem 1.5rem;
@@ -46,10 +46,10 @@
   color: white;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(108, 122, 224, 0.3);
-} */
+}
 
 .askQuestionBtn:hover {
-  background-color: #5a67d8;
+  background-color: #FF8502;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(108, 122, 224, 0.4);
 }
@@ -118,7 +118,7 @@
 
 .see_more_button,
 .see_less_button {
-  background: linear-gradient(135deg, #6c7ae0 0%, #5a67d8 100%);
+  background: #526CF0;
   border: none;
   border-radius: 8px;
   padding: 0.75rem 1.5rem;
@@ -132,7 +132,7 @@
 
 .see_more_button:hover,
 .see_less_button:hover {
-  background: linear-gradient(135deg, #5a67d8 0%, #4c63d2 100%);
+  background: #FF8502;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(108, 122, 224, 0.4);
 }
@@ -151,12 +151,12 @@
 
 /* Alternative styling for See Less button */
 .see_less_button {
-  background: linear-gradient(135deg, #718096 0%, #4a5568 100%);
+  background: #526CF0;
   box-shadow: 0 2px 8px rgba(113, 128, 150, 0.3);
 }
 
 .see_less_button:hover {
-  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+  background: #FF8502;
   box-shadow: 0 4px 12px rgba(113, 128, 150, 0.4);
 }
 

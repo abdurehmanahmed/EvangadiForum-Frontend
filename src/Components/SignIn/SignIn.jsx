@@ -29,7 +29,9 @@ const SignIn = () => {
       if (result.success) {
         setMessage("Login successful!");
         setFormData({ email: "", password: "" });
-        navigate("/home"); // ✅ Redirect after login
+
+        navigate("/home"); //Redirect after login
+
       } else {
         setError(result.message || "Login failed");
       }
@@ -84,7 +86,7 @@ const SignIn = () => {
         <button
           type="submit"
           className={styles.signinButton}
-          disabled={loading || !formData.email || !formData.password}
+          disabled={loading}
         >
           {loading ? <span className={styles.spinner}></span> : "Sign In"}
         </button>
@@ -106,5 +108,6 @@ const SignIn = () => {
     </div>
   );
 };
+
 
 export default SignIn;
