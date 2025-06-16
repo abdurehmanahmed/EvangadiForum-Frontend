@@ -15,21 +15,24 @@ const SignIn = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    // e= event object//
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-    setMessage("");
+    e.preventDefault(); // Stop page from refreshing
+    setLoading(true);  // Show spinner
+    setError("");       // Clear old error
+    setMessage("");  // Clear old success message
     try {
       const result = await login(formData.email, formData.password);
 
       if (result.success) {
         setMessage("Login successful!");
         setFormData({ email: "", password: "" });
-        navigate("/home"); // ✅ Redirect after login
+
+        navigate("/home"); //Redirect after login
+
       } else {
         setError(result.message || "Login failed");
       }
@@ -84,7 +87,7 @@ const SignIn = () => {
         <button
           type="submit"
           className={styles.signinButton}
-          disabled={loading || !formData.email || !formData.password}
+          disabled={loading}
         >
           {loading ? <span className={styles.spinner}></span> : "Sign In"}
         </button>
@@ -106,5 +109,6 @@ const SignIn = () => {
     </div>
   );
 };
+
 
 export default SignIn;
