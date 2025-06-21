@@ -1,3 +1,4 @@
+
 import { Route, Routes } from "react-router-dom";
 
 import Layout from "./Components/Layout/Layout";
@@ -7,7 +8,7 @@ import Landing from "./Pages/Landing/Landing";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import QuestionPage from "./Pages/Question/QuestionPage";
 import AnswerPage from "./Pages/Answer/Answer";
-import HowItWorks from "../src/Pages/HowItWorks/HowItWorks"
+import HowItWorks from "../src/Pages/HowItWorks/HowItWorks";
 
 function Router() {
   return (
@@ -23,13 +24,12 @@ function Router() {
         }
       />
 
-
       <Route
         path="/how-it-works"
         element={
-            <Layout>
-              <HowItWorks/>
-            </Layout>
+          <Layout>
+            <HowItWorks />
+          </Layout>
         }
       />
 
@@ -43,6 +43,18 @@ function Router() {
           </ProtectedRoute>
         }
       />
+
+      <Route
+        path="/editQuestion/:id"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <QuestionPage />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
       <Route
         path="/question/:questionId"
         element={
@@ -59,4 +71,3 @@ function Router() {
 }
 
 export default Router;
-

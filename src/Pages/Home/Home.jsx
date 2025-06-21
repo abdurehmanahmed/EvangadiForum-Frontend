@@ -1,3 +1,4 @@
+
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../Components/Auth/Auth";
 import { useNavigate } from "react-router-dom";
@@ -5,14 +6,14 @@ import { questionsAPI } from "../../Utility/axios";
 import QuestionList from "../../Components/QuestionList/QuestionList";
 import { Button, Spinner } from "react-bootstrap";
 import styles from "./Home.module.css";
-//home page
+
 const Home = () => {
-  
   const [questions, setQuestions] = useState([]);
   const [allQuestions, setAllQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [displayCount, setDisplayCount] = useState(4);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -23,9 +24,12 @@ const Home = () => {
 
   useEffect(() => {
     if (allQuestions.length > 0) {
-      setQuestions(allQuestions.slice(0, displayCount));
+      const filtered = allQuestions.filter((q) =>
+        q.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setQuestions(filtered.slice(0, displayCount));
     }
-  }, [displayCount, allQuestions]);
+  }, [displayCount, allQuestions, searchTerm]); // Added searchTerm as dependency
 
   const fetchQuestions = async () => {
     try {
@@ -48,7 +52,6 @@ const Home = () => {
   };
 
   const handleAskQuestion = () => {
-
     navigate("/askQuestion");
   };
 
@@ -87,6 +90,15 @@ const Home = () => {
           </div>
         </div>
 
+        <div className={styles.searchContainer}>
+          <input
+            type="text"
+            placeholder="Search questions by title..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className={styles.searchInput}
+          />
+        </div>
 
         <div className={styles.questionsSection}>
           <h2 className={styles.questionsTitle}>Questions</h2>
@@ -109,8 +121,6 @@ const Home = () => {
             )}
           </div>
 
-
-          {/* Show buttons for see more / see less only if needed */}
           <div className={styles.see_more_container}>
             {displayCount < allQuestions.length && (
               <Button
